@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title></title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<p>CodeBook</p>
+
+<p>Global variable</p>
+
+<p>ROOT: the working directory for the dataset
+sep: the character indicates the path delimiter
+B. Read files: test and training sets</p>
+
+<p>test.x &gt;&gt; features test X.
+test.y &gt;&gt; activity test dataset.
+subject.test &gt;&gt; subject test dataset.
+training.x &gt;&gt; features training X.
+training.y &gt;&gt; activity training dataset.
+subject.training &gt;&gt; subject training dataset.
+features &gt;&gt; index and names variables for the datasets.
+featureNames &gt;&gt; descriptives names variables for activity.
+1. Merges the training and the test sets to create one data set</p>
+
+<p>test &gt;&gt; Merge the test data into one piece of data (Subject, Activity and feature test) [using cbind].
+train &gt;&gt; Merge the training data into one piece of data (Subject, Activity and feature training) [using cbind].
+bindData &gt;&gt; The test and the training combined (using rbind).
+2. Extracts only the measurements on the mean and standard deviation for each measurement</p>
+
+<p>goodFeatures &gt;&gt; The columns which contained mean or std values were identified using the grep function.
+features &gt;&gt; the data with the subset of columns that contains mean or std values.
+data &gt;&gt; The subset data from the feature, equivalent to the only measurements on the mean and standard deviation.
+3. Uses descriptive activity names to name the activities in the data set</p>
+
+<p>actNames &gt;&gt; It&#39;s the descriptive name for the name of activities.
+4. Appropriately labels the data set with descriptive activity names</p>
+
+<p>data$activity &gt;&gt; With the method mapvalues() and as.character() we replaced by the corresponing activity name.
+5. Creates a second, independent tidy data set with the average of each variable for each activity and each</p>
+
+<p>tabledata &gt;&gt; we convert the data to a data table.
+tidy &gt;&gt; This is the independent tidy data set with the average of each variable.
+output.txt &gt;&gt; The resulting average tidy dataset were exported to this file.</p>
+
+</body>
+
+</html>
+
