@@ -30,8 +30,13 @@ Assumptions:
 
 The datasets from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip are downloaded and unzipped and kept in the current working directory before running the script.
 
+The script creates a output file "tidy_data.txt" in the current working directory. It is assumed that there is no file with the name "tidy_data.txt" in the current working directory before running the script.
+
+The Script is tested in Window 8.1 Environment R version 3.1.0
+
 
 run_analysis.R Script - How it works?
+--------------------------------------
 
 1) Merging Training and Test data sets:
   
@@ -106,3 +111,8 @@ The reshaped data is written in a text file in the current working environment. 
 ````{r}
 capture.output( print(tidy_df, row.names = F, justify = "left"), file=paste0("./tidydata.txt"))
 ``````
+
+How to Run run_analysis Script:
+-------------------------------
+
+The script is actually a function. A call to run_analysis() at the Console screen in RStudio will run the script and writes the output data in "tidy_data.txt" in the current working directory.

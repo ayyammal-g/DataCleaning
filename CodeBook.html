@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=9" >
 
-<title></title>
+<title>CodeBook</title>
 
 <style type="text/css">
 body, td {
@@ -142,43 +142,432 @@ hr {
 </head>
 
 <body>
-<p>CodeBook</p>
+<h1>CodeBook</h1>
 
-<p>Global variable</p>
+<h2>Input Data : </h2>
 
-<p>ROOT: the working directory for the dataset
-sep: the character indicates the path delimiter
-B. Read files: test and training sets</p>
+<p>Human Activity Recognition Using Smartphones Dataset Version 1.0 is the input data downloaded from <a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a></p>
 
-<p>test.x &gt;&gt; features test X.
-test.y &gt;&gt; activity test dataset.
-subject.test &gt;&gt; subject test dataset.
-training.x &gt;&gt; features training X.
-training.y &gt;&gt; activity training dataset.
-subject.training &gt;&gt; subject training dataset.
-features &gt;&gt; index and names variables for the datasets.
-featureNames &gt;&gt; descriptives names variables for activity.
-1. Merges the training and the test sets to create one data set</p>
+<p>The input datasets are partitioned into two sets, where 70% are data from volunteers selected for training  and 30% are from volunteers selected for test. </p>
 
-<p>test &gt;&gt; Merge the test data into one piece of data (Subject, Activity and feature test) [using cbind].
-train &gt;&gt; Merge the training data into one piece of data (Subject, Activity and feature training) [using cbind].
-bindData &gt;&gt; The test and the training combined (using rbind).
-2. Extracts only the measurements on the mean and standard deviation for each measurement</p>
+<h2>Data Clean Up:</h2>
 
-<p>goodFeatures &gt;&gt; The columns which contained mean or std values were identified using the grep function.
-features &gt;&gt; the data with the subset of columns that contains mean or std values.
-data &gt;&gt; The subset data from the feature, equivalent to the only measurements on the mean and standard deviation.
-3. Uses descriptive activity names to name the activities in the data set</p>
+<h3>Omitted Data :</h3>
 
-<p>actNames &gt;&gt; It&#39;s the descriptive name for the name of activities.
-4. Appropriately labels the data set with descriptive activity names</p>
+<ul>
+<li>Inertia Signals Data Set in Test and Train do not represent the mean or standard deviation values. Hence the data are stored in train/Inertial Signals/, test/Inertial Signals  are ignored while preparing tidy data. Below are the list of files that omitted in train/Intertial Signals. Similar files in /test/inertia signals are also ignored.</li>
+</ul>
 
-<p>data$activity &gt;&gt; With the method mapvalues() and as.character() we replaced by the corresponing activity name.
-5. Creates a second, independent tidy data set with the average of each variable for each activity and each</p>
+<pre><code>  1.  Files containing values of Triaxial acceleration from the accelerometer (total acceleration): total _ acc_ x_ train.txt, total_ acc_ y_ train.txt, total_ acc_ z_train.txt
 
-<p>tabledata &gt;&gt; we convert the data to a data table.
-tidy &gt;&gt; This is the independent tidy data set with the average of each variable.
-output.txt &gt;&gt; The resulting average tidy dataset were exported to this file.</p>
+  2. Files containing Estimated Body Accelaration: body_ acc_ x _ train.txt, train/Inertial Signals/body_ acc_ y_ train.txt, body_ acc_z _train.txt
+
+  3. Files containing The angular velocity vector measured by the gyroscope: body_ gyro_ x_ train.txt, body_ gyro_ y_ train.txt, body_ gyro_ z_train.txt
+</code></pre>
+
+<h3>Modified Data</h3>
+
+<ul>
+<li><p>Below files in train and test are merged together to form a new data set containing 516 Feature variables, Activity Label and Subject IDs as columns and each row represents the corresponding observations made for testing and training. </p>
+
+<p>features.txt - A 561-feature vector with time and frequency domain variables. 
+  y_train.txt -  activity label. 
+  subject_train.txt - An identifier of the subject who carried out the experiment.</p></li>
+<li><p>Activity Variable is added to give better description about the activity for each  observation. </p></li>
+<li><p>561 feature variables are further refined to hold only measurements that has mean() or std() as its values. Thus the 561 variables are reduced to 66 variables.</p>
+
+<ul>
+<li>These 66 variable names are renamed with better descriptive names</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Names in Features.txt</th>
+<th>Modified Names</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tBodyAcc-mean()-X</td>
+<td>TimeBodyAccelartionMeanX</td>
+</tr>
+<tr>
+<td>tBodyAcc-mean()-Y</td>
+<td>TimeBodyAccelartionMeanY</td>
+</tr>
+<tr>
+<td>tBodyAcc-mean()-Z</td>
+<td>TimeBodyAccelartionMeanZ</td>
+</tr>
+<tr>
+<td>tBodyAcc-std()-X</td>
+<td>TimeBodyAccelartionStdDevX</td>
+</tr>
+<tr>
+<td>tBodyAcc-std()-Y</td>
+<td>TimeBodyAccelartionStdDevY</td>
+</tr>
+<tr>
+<td>tBodyAcc-std()-Z</td>
+<td>TimeBodyAccelartionStdDevZ</td>
+</tr>
+<tr>
+<td>tGravityAcc-mean()-X</td>
+<td>TimeGravityAccelartionMeanX</td>
+</tr>
+<tr>
+<td>tGravityAcc-mean()-Y</td>
+<td>TimeGravityAccelartionMeanY</td>
+</tr>
+<tr>
+<td>tGravityAcc-mean()-Z</td>
+<td>TimeGravityAccelartionMeanZ</td>
+</tr>
+<tr>
+<td>tGravityAcc-std()-X</td>
+<td>TimeGravityAccelartionStdDevX</td>
+</tr>
+<tr>
+<td>tGravityAcc-std()-Y</td>
+<td>TimeGravityAccelartionStdDevY</td>
+</tr>
+<tr>
+<td>tGravityAcc-std()-Z</td>
+<td>TimeGravityAccelartionStdDevZ</td>
+</tr>
+<tr>
+<td>tBodyAccJerk-mean()-X</td>
+<td>TimeBodyAccelartionJerkMeanX</td>
+</tr>
+<tr>
+<td>tBodyAccJerk-mean()-Y</td>
+<td>TimeBodyAccelartionJerkMeanY</td>
+</tr>
+<tr>
+<td>tBodyAccJerk-mean()-Z</td>
+<td>TimeBodyAccelartionJerkMeanZ</td>
+</tr>
+<tr>
+<td>tBodyAccJerk-std()-X</td>
+<td>TimeBodyAccelartionJerkStdDevX</td>
+</tr>
+<tr>
+<td>tBodyAccJerk-std()-Y</td>
+<td>TimeBodyAccelartionJerkStdDevY</td>
+</tr>
+<tr>
+<td>tBodyAccJerk-std()-Z</td>
+<td>TimeBodyAccelartionJerkStdDevZ</td>
+</tr>
+<tr>
+<td>tBodyGyro-mean()-X</td>
+<td>TimeBodyGyroscopicMeanX</td>
+</tr>
+<tr>
+<td>tBodyGyro-mean()-Y</td>
+<td>TimeBodyGyroscopicMeanY</td>
+</tr>
+<tr>
+<td>tBodyGyro-mean()-Z</td>
+<td>TimeBodyGyroscopicMeanZ</td>
+</tr>
+<tr>
+<td>tBodyGyro-std()-X</td>
+<td>TimeBodyGyroscopicStdDevX</td>
+</tr>
+<tr>
+<td>tBodyGyro-std()-Y</td>
+<td>TimeBodyGyroscopicStdDevY</td>
+</tr>
+<tr>
+<td>tBodyGyro-std()-Z</td>
+<td>TimeBodyGyroscopicStdDevZ</td>
+</tr>
+<tr>
+<td>tBodyGyroJerk-mean()-X</td>
+<td>TimeBodyGyroscopicJerkMeanX</td>
+</tr>
+<tr>
+<td>tBodyGyroJerk-mean()-Y</td>
+<td>TimeBodyGyroscopicJerkMeanY</td>
+</tr>
+<tr>
+<td>tBodyGyroJerk-mean()-Z</td>
+<td>TimeBodyGyroscopicJerkMeanZ</td>
+</tr>
+<tr>
+<td>tBodyGyroJerk-std()-X</td>
+<td>TimeBodyGyroscopicJerkStdDevX</td>
+</tr>
+<tr>
+<td>tBodyGyroJerk-std()-Y</td>
+<td>TimeBodyGyroscopicJerkStdDevY</td>
+</tr>
+<tr>
+<td>tBodyGyroJerk-std()-Z</td>
+<td>TimeBodyGyroscopicJerkStdDevZ</td>
+</tr>
+<tr>
+<td>tGravityAccMag-mean()</td>
+<td>TimeGravityAccelartionMagnitudeMean</td>
+</tr>
+<tr>
+<td>tGravityAccMag-std()</td>
+<td>TimeGravityAccelartionMagnitudeStdDev</td>
+</tr>
+<tr>
+<td>tBodyAccMag-mean()</td>
+<td>TimeBodyAccelartionMagnitudeMean</td>
+</tr>
+<tr>
+<td>tBodyAccMag-std()</td>
+<td>TimeBodyAccelartionMagnitudeStdDev</td>
+</tr>
+<tr>
+<td>tBodyAccJerkMag-mean()</td>
+<td>TimeBodyAccelartionJerkMagnitudeMean</td>
+</tr>
+<tr>
+<td>tBodyAccJerkMag-std()</td>
+<td>TimeBodyAccelartionJerkMagnitudeStdDev</td>
+</tr>
+<tr>
+<td>tBodyGyroMag-mean()</td>
+<td>TimeBodyGyroscopicMagnitudeMean</td>
+</tr>
+<tr>
+<td>tBodyGyroMag-std()</td>
+<td>TimeBodyGyroscopicMagnitudeStdDev</td>
+</tr>
+<tr>
+<td>tBodyGyroJerkMag-mean()</td>
+<td>TimeBodyGyroscopicJerkMagnitudeMean</td>
+</tr>
+<tr>
+<td>tBodyGyroJerkMag-std()</td>
+<td>TimeBodyGyroscopicJerkMagnitudeStdDev</td>
+</tr>
+<tr>
+<td>fBodyAcc-mean()-X</td>
+<td>FrequencyBodyAccelartionMeanX</td>
+</tr>
+<tr>
+<td>fBodyAcc-mean()-Y</td>
+<td>FrequencyBodyAccelartionMeanY</td>
+</tr>
+<tr>
+<td>fBodyAcc-mean()-Z</td>
+<td>FrequencyBodyAccelartionMeanZ</td>
+</tr>
+<tr>
+<td>fBodyAcc-std()-X</td>
+<td>FrequencyBodyAccelartionStdDevX</td>
+</tr>
+<tr>
+<td>fBodyAcc-std()-Y</td>
+<td>FrequencyBodyAccelartionStdDevY</td>
+</tr>
+<tr>
+<td>fBodyAcc-std()-Z</td>
+<td>FrequencyBodyAccelartionStdDevZ</td>
+</tr>
+<tr>
+<td>fBodyAccJerk-mean()-X</td>
+<td>FrequencyBodyAccelartionJerkMeanX</td>
+</tr>
+<tr>
+<td>fBodyAccJerk-mean()-Y</td>
+<td>FrequencyBodyAccelartionJerkMeanY</td>
+</tr>
+<tr>
+<td>fBodyAccJerk-mean()-Z</td>
+<td>FrequencyBodyAccelartionJerkMeanZ</td>
+</tr>
+<tr>
+<td>fBodyAccJerk-std()-X</td>
+<td>FrequencyBodyAccelartionJerkStdDevX</td>
+</tr>
+<tr>
+<td>fBodyAccJerk-std()-Y</td>
+<td>FrequencyBodyAccelartionJerkStdDevY</td>
+</tr>
+<tr>
+<td>fBodyAccJerk-std()-Z</td>
+<td>FrequencyBodyAccelartionJerkStdDevZ</td>
+</tr>
+<tr>
+<td>fBodyGyro-mean()-X</td>
+<td>FrequencyBodyGyroscopicMeanX</td>
+</tr>
+<tr>
+<td>fBodyGyro-mean()-Y</td>
+<td>FrequencyBodyGyroscopicMeanY</td>
+</tr>
+<tr>
+<td>fBodyGyro-mean()-Z</td>
+<td>FrequencyBodyGyroscopicMeanZ</td>
+</tr>
+<tr>
+<td>fBodyGyro-std()-X</td>
+<td>FrequencyBodyGyroscopicStdDevX</td>
+</tr>
+<tr>
+<td>fBodyGyro-std()-Y</td>
+<td>FrequencyBodyGyroscopicStdDevY</td>
+</tr>
+<tr>
+<td>fBodyGyro-std()-Z</td>
+<td>FrequencyBodyGyroscopicStdDevZ</td>
+</tr>
+<tr>
+<td>fBodyAccMag-mean()</td>
+<td>FrequencyBodyAccelartionMagnitudeMean</td>
+</tr>
+<tr>
+<td>fBodyAccMag-std()</td>
+<td>FrequencyBodyAccelartionMagnitudeStdDev</td>
+</tr>
+<tr>
+<td>fBodyAccJerkMag-mean()</td>
+<td>FrequencyBodyAccelartionJerkMagnitudeMean</td>
+</tr>
+<tr>
+<td>fBodyAccJerkMag-std()</td>
+<td>FrequencyBodyAccelartionJerkMagnitudeStdDev</td>
+</tr>
+<tr>
+<td>fBodyGyroMag-mean()</td>
+<td>FrequencyBodyGyroscopicMagnitudeMean</td>
+</tr>
+<tr>
+<td>fBodyGyroMag-std()</td>
+<td>FrequencyBodyGyroscopicMagnitudeStdDev</td>
+</tr>
+<tr>
+<td>fBodyGyroJerkMag-mean()</td>
+<td>FrequencyBodyGyroscopicJerkMagnitudeMean</td>
+</tr>
+<tr>
+<td>fBodyGyroJerkMag-std()</td>
+<td>FrequencyBodyGyroscopicJerkMagnitudeStdDev</td>
+</tr>
+</tbody></table></li>
+</ul>
+
+<h2>Tidy Data : </h2>
+
+<p>The cleaned up data is written to  tidy_data.txt which is stored in current working directory.</p>
+
+<p>Fields:</p>
+
+<ol>
+<li><p>Subject: 
+Represents the ID for the volunteers who participated in  the experiment.
+Values range between 1 - 30</p></li>
+<li><p>Activity:</p>
+
+<p>During the experiment, the Subjects performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. The activity variable represents one of those activities performed by the subject.</p></li>
+<li><p>Measurement:</p>
+
+<p>The measurement variable holds the names of feature variables which represents mean or standard deviation of the measurement. Measurement Variable holds any of the below 66 Features Variables as values.</p>
+
+<p>Time Domained Signals:</p>
+
+<p>TimeBodyAccelartionMeanX
+   TimeBodyAccelartionMeanY
+   TimeBodyAccelartionMeanZ</p>
+
+<p>TimeBodyAccelartionStdDevX
+   TimeBodyAccelartionStdDevY
+   TimeBodyAccelartionStdDevZ</p>
+
+<p>TimeGravityAccelartionMeanX
+   TimeGravityAccelartionMeanY
+   TimeGravityAccelartionMeanZ</p>
+
+<p>TimeGravityAccelartionStdDevX
+   TimeGravityAccelartionStdDevY
+   TimeGravityAccelartionStdDevZ</p>
+
+<p>TimeBodyAccelartionJerkMeanX
+   TimeBodyAccelartionJerkMeanY
+   TimeBodyAccelartionJerkMeanZ</p>
+
+<p>TimeBodyAccelartionJerkStdDevX
+   TimeBodyAccelartionJerkStdDevY
+   TimeBodyAccelartionJerkStdDevZ</p>
+
+<p>TimeBodyGyroscopicMeanX
+   TimeBodyGyroscopicMeanY
+   TimeBodyGyroscopicMeanZ</p>
+
+<p>TimeBodyGyroscopicStdDevX
+   TimeBodyGyroscopicStdDevY
+   TimeBodyGyroscopicStdDevZ</p>
+
+<p>TimeBodyGyroscopicJerkMeanX
+   TimeBodyGyroscopicJerkMeanY
+   TimeBodyGyroscopicJerkMeanZ</p>
+
+<p>TimeBodyGyroscopicJerkStdDevX 
+   TimeBodyGyroscopicJerkStdDevY
+   TimeBodyGyroscopicJerkStdDevZ</p>
+
+<p>TimeBodyAccelartionMagnitudeMean
+   TimeBodyAccelartionMagnitudeStdDev</p>
+
+<p>TimeGravityAccelartionMagnitudeMean
+   TimeGravityAccelartionMagnitudeStdDev</p>
+
+<p>TimeBodyAccelartionJerkMagnitudeMean
+   TimeBodyAccelartionJerkMagnitudeStdDev</p>
+
+<p>TimeBodyGyroscopicMagnitudeMean 
+   TimeBodyGyroscopicMagnitudeStdDev</p>
+
+<p>TimeBodyGyroscopicJerkMagnitudeMean
+   TimeBodyGyroscopicJerkMagnitudeStdDev</p>
+
+<p>Frequency Domain Signals:</p>
+
+<p>FrequencyBodyAccelartionMeanX 
+   FrequencyBodyAccelartionMeanY
+   FrequencyBodyAccelartionMeanZ</p>
+
+<p>FrequencyBodyAccelartionStdDevX
+   FrequencyBodyAccelartionStdDevY
+   FrequencyBodyAccelartionStdDevZ</p>
+
+<p>FrequencyBodyAccelartionJerkMeanX
+   FrequencyBodyAccelartionJerkMeanY
+   FrequencyBodyAccelartionJerkMeanZ</p>
+
+<p>FrequencyBodyAccelartionJerkStdDevX
+   FrequencyBodyAccelartionJerkStdDevY
+   FrequencyBodyAccelartionJerkStdDevZ</p>
+
+<p>FrequencyBodyGyroscopicMeanX
+   FrequencyBodyGyroscopicMeanY
+   FrequencyBodyGyroscopicMeanZ</p>
+
+<p>FrequencyBodyGyroscopicStdDevX
+   FrequencyBodyGyroscopicStdDevY
+   FrequencyBodyGyroscopicStdDevZ</p>
+
+<p>FrequencyBodyAccelartionMagnitudeMean
+   FrequencyBodyAccelartionMagnitudeStdDev </p>
+
+<p>FrequencyBodyAccelartionJerkMagnitudeMean
+   FrequencyBodyAccelartionJerkMagnitudeStdDev</p>
+
+<p>FrequencyBodyGyroscopicMagnitudeMean
+   FrequencyBodyGyroscopicMagnitudeStdDev</p>
+
+<p>FrequencyBodyGyroscopicJerkMagnitudeMean
+   FrequencyBodyGyroscopicJerkMagnitudeStdDev</p></li>
+<li><p>Mean</p>
+
+<p>It holds mean value for a  Feature Variable for a subject for an activity of an observation. Its value is decimal and the result is rounded to 5 digits.</p></li>
+</ol>
 
 </body>
 
