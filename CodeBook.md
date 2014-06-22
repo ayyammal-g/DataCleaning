@@ -111,23 +111,24 @@ Data Clean Up:
 Tidy Data : 
 -----------
 
-The cleaned up data is written to  tidy_data.txt which is stored in current working directory.
+The cleaned up data is written to  tidydata.txt which is stored in current working directory.
 
 Fields:
+-------
 
-1. Subject: 
+## Subject: 
     Represents the ID for the subjects who participated in  the experiment.
     Values range between 1 - 30
     
     
-2. Activity:
+## Activity:
 
      During the experiment, the Subjects performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. The activity variable represents one of those activities performed by the subject.
   
     
-3. Measurement:
+## Measurement:
 
-    The measurement variable holds the names of feature variables which represents mean or standard deviation of the measurement. Measurement Variable holds any of the below 66 Features Variables as values. (The renamed variables in Table 1)
+    The measurement variable holds the names of feature variables which represents mean or standard deviation of the measurement. Measurement Variable holds any of the below 66 Features Variables as values. (The renamed variables column in Table mentioned under modified data)
     
     Time Domained Signals:
     
@@ -224,6 +225,6 @@ Fields:
        FrequencyBodyGyroscopicJerkMagnitudeMean
        FrequencyBodyGyroscopicJerkMagnitudeStdDev
     
-4. Mean
+## Mean
 
     It holds mean value for a  Feature Variable for a subject for an activity of an observation. Its value is decimal and the result is rounded to 5 digits.

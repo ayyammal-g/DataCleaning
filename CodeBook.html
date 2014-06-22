@@ -174,16 +174,12 @@ hr {
   y_train.txt -  activity label. 
   subject_train.txt - An identifier of the subject who carried out the experiment.</p></li>
 <li><p>Activity Variable is added to give better description about the activity for each  observation. </p></li>
-<li><p>561 feature variables are further refined to hold only measurements that has mean() or std() as its values. Thus the 561 variables are reduced to 66 variables.</p>
-
-<ul>
-<li>These 66 variable names are renamed with better descriptive names</li>
-</ul>
+<li><p>561 feature variables are further refined to hold only measurements that has mean() or std() as its values. Thus the 561 variables are reduced to 66 variables. These 66 variable names are renamed with better descriptive names</p>
 
 <table><thead>
 <tr>
 <th>Names in Features.txt</th>
-<th>Modified Names</th>
+<th>Renamed Variables</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -455,119 +451,125 @@ hr {
 
 <h2>Tidy Data : </h2>
 
-<p>The cleaned up data is written to  tidy_data.txt which is stored in current working directory.</p>
+<p>The cleaned up data is written to  tidydata.txt which is stored in current working directory.</p>
 
-<p>Fields:</p>
+<h2>Fields:</h2>
 
-<ol>
-<li><p>Subject: 
-Represents the ID for the volunteers who participated in  the experiment.
-Values range between 1 - 30</p></li>
-<li><p>Activity:</p>
+<h2>Subject:</h2>
 
-<p>During the experiment, the Subjects performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. The activity variable represents one of those activities performed by the subject.</p></li>
-<li><p>Measurement:</p>
+<pre><code>Represents the ID for the subjects who participated in  the experiment.
+Values range between 1 - 30
+</code></pre>
 
-<p>The measurement variable holds the names of feature variables which represents mean or standard deviation of the measurement. Measurement Variable holds any of the below 66 Features Variables as values.</p>
+<h2>Activity:</h2>
 
-<p>Time Domained Signals:</p>
+<pre><code> During the experiment, the Subjects performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. The activity variable represents one of those activities performed by the subject.
+</code></pre>
 
-<p>TimeBodyAccelartionMeanX
+<h2>Measurement:</h2>
+
+<pre><code>The measurement variable holds the names of feature variables which represents mean or standard deviation of the measurement. Measurement Variable holds any of the below 66 Features Variables as values. (The renamed variables in Table 1)
+
+Time Domained Signals:
+
+   TimeBodyAccelartionMeanX
    TimeBodyAccelartionMeanY
-   TimeBodyAccelartionMeanZ</p>
+   TimeBodyAccelartionMeanZ
 
-<p>TimeBodyAccelartionStdDevX
+   TimeBodyAccelartionStdDevX
    TimeBodyAccelartionStdDevY
-   TimeBodyAccelartionStdDevZ</p>
+   TimeBodyAccelartionStdDevZ
 
-<p>TimeGravityAccelartionMeanX
+   TimeGravityAccelartionMeanX
    TimeGravityAccelartionMeanY
-   TimeGravityAccelartionMeanZ</p>
+   TimeGravityAccelartionMeanZ
 
-<p>TimeGravityAccelartionStdDevX
+   TimeGravityAccelartionStdDevX
    TimeGravityAccelartionStdDevY
-   TimeGravityAccelartionStdDevZ</p>
+   TimeGravityAccelartionStdDevZ
 
-<p>TimeBodyAccelartionJerkMeanX
+   TimeBodyAccelartionJerkMeanX
    TimeBodyAccelartionJerkMeanY
-   TimeBodyAccelartionJerkMeanZ</p>
+   TimeBodyAccelartionJerkMeanZ
 
-<p>TimeBodyAccelartionJerkStdDevX
+   TimeBodyAccelartionJerkStdDevX
    TimeBodyAccelartionJerkStdDevY
-   TimeBodyAccelartionJerkStdDevZ</p>
+   TimeBodyAccelartionJerkStdDevZ
 
-<p>TimeBodyGyroscopicMeanX
+   TimeBodyGyroscopicMeanX
    TimeBodyGyroscopicMeanY
-   TimeBodyGyroscopicMeanZ</p>
+   TimeBodyGyroscopicMeanZ
 
-<p>TimeBodyGyroscopicStdDevX
+   TimeBodyGyroscopicStdDevX
    TimeBodyGyroscopicStdDevY
-   TimeBodyGyroscopicStdDevZ</p>
+   TimeBodyGyroscopicStdDevZ
 
-<p>TimeBodyGyroscopicJerkMeanX
+   TimeBodyGyroscopicJerkMeanX
    TimeBodyGyroscopicJerkMeanY
-   TimeBodyGyroscopicJerkMeanZ</p>
+   TimeBodyGyroscopicJerkMeanZ
 
-<p>TimeBodyGyroscopicJerkStdDevX 
+   TimeBodyGyroscopicJerkStdDevX 
    TimeBodyGyroscopicJerkStdDevY
-   TimeBodyGyroscopicJerkStdDevZ</p>
+   TimeBodyGyroscopicJerkStdDevZ
 
-<p>TimeBodyAccelartionMagnitudeMean
-   TimeBodyAccelartionMagnitudeStdDev</p>
+   TimeBodyAccelartionMagnitudeMean
+   TimeBodyAccelartionMagnitudeStdDev
 
-<p>TimeGravityAccelartionMagnitudeMean
-   TimeGravityAccelartionMagnitudeStdDev</p>
+   TimeGravityAccelartionMagnitudeMean
+   TimeGravityAccelartionMagnitudeStdDev
 
-<p>TimeBodyAccelartionJerkMagnitudeMean
-   TimeBodyAccelartionJerkMagnitudeStdDev</p>
+   TimeBodyAccelartionJerkMagnitudeMean
+   TimeBodyAccelartionJerkMagnitudeStdDev
 
-<p>TimeBodyGyroscopicMagnitudeMean 
-   TimeBodyGyroscopicMagnitudeStdDev</p>
+   TimeBodyGyroscopicMagnitudeMean 
+   TimeBodyGyroscopicMagnitudeStdDev
 
-<p>TimeBodyGyroscopicJerkMagnitudeMean
-   TimeBodyGyroscopicJerkMagnitudeStdDev</p>
+   TimeBodyGyroscopicJerkMagnitudeMean
+   TimeBodyGyroscopicJerkMagnitudeStdDev
 
-<p>Frequency Domain Signals:</p>
+   Frequency Domain Signals:
 
-<p>FrequencyBodyAccelartionMeanX 
+   FrequencyBodyAccelartionMeanX 
    FrequencyBodyAccelartionMeanY
-   FrequencyBodyAccelartionMeanZ</p>
+   FrequencyBodyAccelartionMeanZ
 
-<p>FrequencyBodyAccelartionStdDevX
+   FrequencyBodyAccelartionStdDevX
    FrequencyBodyAccelartionStdDevY
-   FrequencyBodyAccelartionStdDevZ</p>
+   FrequencyBodyAccelartionStdDevZ
 
-<p>FrequencyBodyAccelartionJerkMeanX
+   FrequencyBodyAccelartionJerkMeanX
    FrequencyBodyAccelartionJerkMeanY
-   FrequencyBodyAccelartionJerkMeanZ</p>
+   FrequencyBodyAccelartionJerkMeanZ
 
-<p>FrequencyBodyAccelartionJerkStdDevX
+   FrequencyBodyAccelartionJerkStdDevX
    FrequencyBodyAccelartionJerkStdDevY
-   FrequencyBodyAccelartionJerkStdDevZ</p>
+   FrequencyBodyAccelartionJerkStdDevZ
 
-<p>FrequencyBodyGyroscopicMeanX
+   FrequencyBodyGyroscopicMeanX
    FrequencyBodyGyroscopicMeanY
-   FrequencyBodyGyroscopicMeanZ</p>
+   FrequencyBodyGyroscopicMeanZ
 
-<p>FrequencyBodyGyroscopicStdDevX
+   FrequencyBodyGyroscopicStdDevX
    FrequencyBodyGyroscopicStdDevY
-   FrequencyBodyGyroscopicStdDevZ</p>
+   FrequencyBodyGyroscopicStdDevZ
 
-<p>FrequencyBodyAccelartionMagnitudeMean
-   FrequencyBodyAccelartionMagnitudeStdDev </p>
+   FrequencyBodyAccelartionMagnitudeMean
+   FrequencyBodyAccelartionMagnitudeStdDev 
 
-<p>FrequencyBodyAccelartionJerkMagnitudeMean
-   FrequencyBodyAccelartionJerkMagnitudeStdDev</p>
+   FrequencyBodyAccelartionJerkMagnitudeMean
+   FrequencyBodyAccelartionJerkMagnitudeStdDev
 
-<p>FrequencyBodyGyroscopicMagnitudeMean
-   FrequencyBodyGyroscopicMagnitudeStdDev</p>
+   FrequencyBodyGyroscopicMagnitudeMean
+   FrequencyBodyGyroscopicMagnitudeStdDev
 
-<p>FrequencyBodyGyroscopicJerkMagnitudeMean
-   FrequencyBodyGyroscopicJerkMagnitudeStdDev</p></li>
-<li><p>Mean</p>
+   FrequencyBodyGyroscopicJerkMagnitudeMean
+   FrequencyBodyGyroscopicJerkMagnitudeStdDev
+</code></pre>
 
-<p>It holds mean value for a  Feature Variable for a subject for an activity of an observation. Its value is decimal and the result is rounded to 5 digits.</p></li>
-</ol>
+<p>##4. Mean</p>
+
+<pre><code>It holds mean value for a  Feature Variable for a subject for an activity of an observation. Its value is decimal and the result is rounded to 5 digits.
+</code></pre>
 
 </body>
 

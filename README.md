@@ -110,9 +110,20 @@ The reshaped data is written in a text file in the current working environment. 
 
 ````{r}
 capture.output( print(tidy_df, row.names = F, justify = "left"), file=paste0("./tidydata.txt"))
+
 ``````
+
+Rearranging from Wide to Long Data: How this Data is still Tidy?
+----------------------------------------------------------------
+
+Instead of Presenting as Wide Data with 66 feature variables as Columns, this script rearrange these variables as values for the column "Measurement". A good proof of showing this data is still tidy is with reference to the paper in  http://vita.had.co.nz/papers/tidy-data.pdf.
+
+  * There is no loss of information in this rearrangement.
+  * The code book clearly explains Measurement holds the values of feature variables and hence thus provides the clarity for analysis
+  * There are several forms of tidy data. This Long data is tidy because  provide a standardized way to link the structure of a dataset (its physical layout)
+with its semantics (its meaning) (Ref: http://vita.had.co.nz/papers/tidy-data.pdf.)
 
 How to Run run_analysis Script:
 -------------------------------
 
-The script is actually a function. A call to run_analysis() at the Console screen in RStudio will run the script and writes the output data in "tidy_data.txt" in the current working directory.
+The script is actually a function. A call to run_analysis() at the Console screen in RStudio will run the script and writes the output data in "tidydata.txt" in the current working directory.

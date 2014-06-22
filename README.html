@@ -282,11 +282,16 @@ gsub(searchTerms[i], replacementTerms[i], givenNames)
 <p>The reshaped data is written in a text file in the current working environment. Refer <strong>CodeBook.md</strong> for more details on this file.</p>
 
 <pre><code class="r">capture.output( print(tidy_df, row.names = F, justify = &quot;left&quot;), file=paste0(&quot;./tidydata.txt&quot;))
+
 </code></pre>
+
+<h2>How this Long Data is Tidy?</h2>
+
+<p>Instead of Presenting as Wide Data with 66 feature variables as Columns, this script rearrange these variables as values for the column &ldquo;Measurement&rdquo;. A good proof of showing this data is still tidy is with reference to the paper in  <a href="http://vita.had.co.nz/papers/tidy-data.pdf">http://vita.had.co.nz/papers/tidy-data.pdf</a></p>
 
 <h2>How to Run run_analysis Script:</h2>
 
-<p>The script is actually a function. A call to run_analysis() at the Console screen in RStudio will run the script and writes the output data in &ldquo;tidy_data.txt&rdquo; in the current working directory.</p>
+<p>The script is actually a function. A call to run_analysis() at the Console screen in RStudio will run the script and writes the output data in &ldquo;tidydata.txt&rdquo; in the current working directory.</p>
 
 </body>
 
