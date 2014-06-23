@@ -199,14 +199,17 @@ hljs.initHighlightingOnLoad();
 
 <p><a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones">http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones</a></p>
 
-<p>run_analysis.R Script - What is has to do?</p>
+<h2>run_analysis.R Script - What it has to do?</h2>
 
-<p>Given the data sets, run_analysis.R Script aims to 
-  1) Merge the training and the test sets to create one data set. 
-  2) Extract only the measurements on the mean and standard deviation for each measurement. 
-  3) Use descriptive activity names to name the activities in the data set 
-  4) Appropriately labels the data set with descriptive activity names. 
-  5) Create a second, independent tidy data set with the average of each variable for each activity and each subject.</p>
+<p>Given the data sets, run_analysis.R Script aims to </p>
+
+<ul>
+<li>Merge the training and the test sets to create one data set. </li>
+<li>Extract only the measurements on the mean and standard deviation for each measurement. </li>
+<li>Use descriptive activity names to name the activities in the data set </li>
+<li>Appropriately labels the data set with descriptive activity names. </li>
+<li>Create a second, independent tidy data set with the average of each variable for each activity and each subject.</li>
+</ul>
 
 <h2>Assumptions:</h2>
 
@@ -285,9 +288,15 @@ gsub(searchTerms[i], replacementTerms[i], givenNames)
 
 </code></pre>
 
-<h2>How this Long Data is Tidy?</h2>
+<h2>Rearranging from Wide to Long Data: How this Data is still Tidy?</h2>
 
-<p>Instead of Presenting as Wide Data with 66 feature variables as Columns, this script rearrange these variables as values for the column &ldquo;Measurement&rdquo;. A good proof of showing this data is still tidy is with reference to the paper in  <a href="http://vita.had.co.nz/papers/tidy-data.pdf">http://vita.had.co.nz/papers/tidy-data.pdf</a></p>
+<p>Instead of Presenting as Wide Data with 66 feature variables as Columns, this script rearrange these variables as values for the column &ldquo;Measurement&rdquo;. A good proof of showing this data is still tidy is with reference to the paper in  <a href="http://vita.had.co.nz/papers/tidy-data.pdf">http://vita.had.co.nz/papers/tidy-data.pdf</a>.</p>
+
+<ul>
+<li>There is no loss of information in this rearrangement.</li>
+<li>The code book clearly explains Measurement holds the values of feature variables and hence gives the clarity needed for analysis</li>
+<li>There are several forms of tidy data. This Long data is tidy because  it provide a standardized way to link the structure of a dataset (its physical layout) with its semantics (its meaning) (Ref: <a href="http://vita.had.co.nz/papers/tidy-data.pdf.">http://vita.had.co.nz/papers/tidy-data.pdf.</a>)</li>
+</ul>
 
 <h2>How to Run run_analysis Script:</h2>
 
