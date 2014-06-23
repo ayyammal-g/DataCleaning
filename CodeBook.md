@@ -1,12 +1,14 @@
 CodeBook
 ========
 
-Input Data : 
-------------
+Input Data from UCI Repository: 
+-------------------------------
 
 Human Activity Recognition Using Smartphones Dataset Version 1.0 is the input data downloaded from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-The input datasets are partitioned into two sets, where 70% are data from volunteers selected for training  and 30% are from volunteers selected for test. 
+The input datasets are partitioned into two sets, where 70% are data from volunteers selected for training  and 30% are from volunteers selected for test.
+
+README.txt in UCI HAR Repository clearly explains the data sets.
 
 
 Data Clean Up:
@@ -227,4 +229,4 @@ Fields:
     
 ## Mean
 
-    It holds mean value for a  Feature Variable for a subject for an activity of an observation. Its value is decimal and the result is rounded to 5 digits.
+    It holds average of each feature variable for each activity and each subject.   Its value is decimal and the result is rounded to 5 digits. As each feature value is  normalized and bounded within [-1,1] their mean values are also within [-1, 1]
