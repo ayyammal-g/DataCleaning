@@ -29,10 +29,11 @@ Data Clean Up:
  
   * Below files in train and test are merged together to form a new data set containing 516 Feature variables, Activity Label and Subject IDs as columns and each row represents the corresponding observations made for testing and training. 
  
-      features.txt - A 561-feature vector with time and frequency domain variables. 
-      y_train.txt -  activity label. 
-      subject_train.txt - An identifier of the subject who carried out the experiment.
-  
+    * **features.txt:** A 561-feature vector with time and frequency domain variables are taken as column headers for the new data set.
+    * **train\y_train.txt, test\y_test.txt:** Activity labels in train and test set   
+    * **train\subject_train.txt, test\subject_test.txt:** An identifier of the subject who carried out the experiment in train and test respectively
+    * **train\x_train.txt, test\x_test.txt:** training set and test set
+    
   * Activity Variable is added to give better description about the activity for each  observation. 
  
   * 561 feature variables are further refined to hold only measurements that has mean() or std() as its values. Thus the 561 variables are reduced to 66 variables. These 66 variable names are renamed with better descriptive names
@@ -119,114 +120,99 @@ Fields:
 -------
 
 ## Subject: 
-    Represents the ID for the subjects who participated in  the experiment.
+  Represents the ID for the subjects who participated in  the experiment.
     Values range between 1 - 30
     
     
 ## Activity:
 
-     During the experiment, the Subjects performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. The activity variable represents one of those activities performed by the subject.
+  The activity variable represents one of the below activities performed by the subject.
+  
+    WALKING  
+    WALKING_UPSTAIRS  
+    WALKING_DOWNSTAIRS  
+    SITTING  
+    STANDING  
+    LAYING  
+.
   
     
 ## Measurement:
 
-    The measurement variable holds the names of feature variables which represents mean or standard deviation of the measurement. Measurement Variable holds any of the below 66 Features Variables as values. (The renamed variables column in Table mentioned under modified data)
+  The measurement variable holds the names of feature variables which represents mean or standard deviation of the measurement. Measurement Variable holds any of the below 66 Features Variables as values. (That is, the renamed variables column in Table mentioned under modified data)
     
-    Time Domained Signals:
+Time Domain Signals:
     
        TimeBodyAccelartionMeanX
        TimeBodyAccelartionMeanY
        TimeBodyAccelartionMeanZ
-       
        TimeBodyAccelartionStdDevX
        TimeBodyAccelartionStdDevY
        TimeBodyAccelartionStdDevZ
-       
        TimeGravityAccelartionMeanX
        TimeGravityAccelartionMeanY
        TimeGravityAccelartionMeanZ
-       
        TimeGravityAccelartionStdDevX
        TimeGravityAccelartionStdDevY
        TimeGravityAccelartionStdDevZ
-       
        TimeBodyAccelartionJerkMeanX
        TimeBodyAccelartionJerkMeanY
        TimeBodyAccelartionJerkMeanZ
-       
        TimeBodyAccelartionJerkStdDevX
        TimeBodyAccelartionJerkStdDevY
        TimeBodyAccelartionJerkStdDevZ
-       
        TimeBodyGyroscopicMeanX
        TimeBodyGyroscopicMeanY
        TimeBodyGyroscopicMeanZ
-       
        TimeBodyGyroscopicStdDevX
        TimeBodyGyroscopicStdDevY
        TimeBodyGyroscopicStdDevZ
-       
        TimeBodyGyroscopicJerkMeanX
        TimeBodyGyroscopicJerkMeanY
        TimeBodyGyroscopicJerkMeanZ
-       
        TimeBodyGyroscopicJerkStdDevX 
        TimeBodyGyroscopicJerkStdDevY
        TimeBodyGyroscopicJerkStdDevZ
-       
        TimeBodyAccelartionMagnitudeMean
        TimeBodyAccelartionMagnitudeStdDev
-       
        TimeGravityAccelartionMagnitudeMean
        TimeGravityAccelartionMagnitudeStdDev
-       
        TimeBodyAccelartionJerkMagnitudeMean
        TimeBodyAccelartionJerkMagnitudeStdDev
-       
        TimeBodyGyroscopicMagnitudeMean 
        TimeBodyGyroscopicMagnitudeStdDev
-       
-       TimeBodyGyroscopicJerkMagnitudeMean
+              TimeBodyGyroscopicJerkMagnitudeMean
        TimeBodyGyroscopicJerkMagnitudeStdDev
        
-       Frequency Domain Signals:
+Frequency Domain Signals:
        
        FrequencyBodyAccelartionMeanX 
        FrequencyBodyAccelartionMeanY
        FrequencyBodyAccelartionMeanZ
-       
        FrequencyBodyAccelartionStdDevX
        FrequencyBodyAccelartionStdDevY
        FrequencyBodyAccelartionStdDevZ
-       
        FrequencyBodyAccelartionJerkMeanX
        FrequencyBodyAccelartionJerkMeanY
        FrequencyBodyAccelartionJerkMeanZ
-       
        FrequencyBodyAccelartionJerkStdDevX
        FrequencyBodyAccelartionJerkStdDevY
        FrequencyBodyAccelartionJerkStdDevZ
-       
        FrequencyBodyGyroscopicMeanX
        FrequencyBodyGyroscopicMeanY
        FrequencyBodyGyroscopicMeanZ
-       
        FrequencyBodyGyroscopicStdDevX
        FrequencyBodyGyroscopicStdDevY
-       FrequencyBodyGyroscopicStdDevZ
-       
+       FrequencyBodyGyroscopicStdDevZ       
        FrequencyBodyAccelartionMagnitudeMean
-       FrequencyBodyAccelartionMagnitudeStdDev 
-       
+       FrequencyBodyAccelartionMagnitudeStdDev
        FrequencyBodyAccelartionJerkMagnitudeMean
        FrequencyBodyAccelartionJerkMagnitudeStdDev
-       
        FrequencyBodyGyroscopicMagnitudeMean
-       FrequencyBodyGyroscopicMagnitudeStdDev
-       
+       FrequencyBodyGyroscopicMagnitudeStdDev 
        FrequencyBodyGyroscopicJerkMagnitudeMean
        FrequencyBodyGyroscopicJerkMagnitudeStdDev
     
 ## Mean
 
-    It holds average of each feature variable for each activity and each subject.   Its value is decimal and the result is rounded to 5 digits. As each feature value is  normalized and bounded within [-1,1] their mean values are also within [-1, 1]
+  It holds average of each feature variable for each activity and each subject.   Its value is decimal and the result is rounded to 5 digits. As each feature value is  normalized and bounded within [-1,1] their mean values are also within [-1, 1]
